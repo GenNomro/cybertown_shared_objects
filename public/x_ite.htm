@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="https://code.create3000.de/x_ite/4.6.8/dist/x_ite.css"/>
     <script type="text/javascript" src="/socket.io/socket.io.js"></script>
     <script type="text/javascript" src="https://code.create3000.de/x_ite/4.6.8/dist/x_ite.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript">
         (async function() {
             window.addEventListener("hashchange", function(e) {
@@ -110,9 +111,82 @@ width: 100%;
 padding: 0;
 border-width: 0;
 }
+
+ul { 
+display: inline;
+list-style-type: none;
+padding: 0;
+}
+
+li {
+}
+
+ul li ul li { 
+display: inherent; 
+}
+
+ul li ul { 
+display: none; 
+}
+
+.menub {
+display: inline-block; 
+max-height: 6vh;
+border: 0;
+}
+
+.subm {
+margin-bottom: 6px;
+}
+
+.menu { 
+overflow-x: hidden;
+position: relative;
+right: 0;
+}
+
+.menu-open { margin-left:0vh; }
+
+.menu-open .menu-side { left:0; }
+
+.menu-side, .menu {
+-webkit-transition: all 0.2s ease-in;
+-moz-transition: all 0.2s ease-in;
+transition: all 0.2s ease-in;
+}
+
+.menu-side {
+font-size: 3.5vmin;
+position:fixed;
+left:-80vmin;
+width:60vmin;
+border-right: 0px;
+height:100vh;
+Background-Color: rgba(140,40,140,0.9);
+padding-left: 4vmin;
+padding-right: 2vmin;
+padding-top: 0px;
+padding-bottom: 0px;
+Z-index: 1000;
+}
+
 </style>
 </head>
-<body>
+<body class="menu">
+
+<nav class="menu-side">
+<ul>
+<li><a href="#" class="menu-toggle" style="text-align: right;">Close Menu</a></li>
+<li><a href="./Index.shtml">Home</a></li>
+</ul>
+<script>
+(function() { var body = $('body');
+$('.menu-toggle').bind('click', function() { body.toggleClass('menu-open');
+return false; });
+})();
+</script>
+</nav>
+
 <div id="world" class="world">
 </div>
 <div class="chatarea">
@@ -127,6 +201,7 @@ border-width: 0;
 </div>
 <div class="objarea">
 Objects ETC here
+<a href="#" class="menu-toggle menub">Sidebar</a>
 </div>
 </div>
 </body>
